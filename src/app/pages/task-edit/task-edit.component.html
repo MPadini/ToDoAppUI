@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Update task Description</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field style="width: 100%;">
+            <mat-label>Task description</mat-label>
+            <input matInput formControlName="taskDescription" autocomplete="off" cdkFocusInitial [(ngModel)]="taskDescription">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions style="float:right">
+    <button mat-button (click)="close()">Close</button>
+    <button mat-raised-button color="primary" (click)="update()">Update</button>
+</div>

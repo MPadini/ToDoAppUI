@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Welcome</mat-card-title>
+        <mat-card-subtitle>Please, select a user to view their tasks</mat-card-subtitle><br>
+    </mat-card-header>
+
+    <mat-list style="max-height: 550px;overflow: auto;">
+        <mat-list-item *ngFor="let user of users" class="userItem">
+            <mat-icon mat-list-icon (click)="viewTasks(user)">launch</mat-icon>
+            <h4 mat-line (click)="viewTasks(user)">{{user.name}}</h4>
+            <mat-icon class="deleteItem" matTooltip="Edit user" style="margin-right: 2%;" (click)="updateUser(user)">create</mat-icon>
+            <mat-icon class="deleteItem" matTooltip="Delete user" (click)="deleteUser(user)">delete</mat-icon>
+        </mat-list-item>
+    </mat-list>
+</mat-card>

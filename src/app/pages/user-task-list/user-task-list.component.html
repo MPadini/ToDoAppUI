@@ -1,0 +1,29 @@
+<h1 mat-dialog-title style="float: left;">{{userName}}´s Tasks</h1>
+<button *ngIf="!addNewTaskVisible" mat-fab color="primary" class="taskButton" (click)="addNewTask()">
+    <mat-icon matTooltip="Add new task">playlist_add</mat-icon>
+</button>
+<div mat-dialog-content style="margin-top: 50px;  width: 100%; max-height: 400px;">
+    <app-task *ngIf="addNewTaskVisible" (closeTask)="onCloseTask()" (createTask)="onCreateTask()"></app-task>
+    <div *ngIf="hasFiles">
+        <div *ngFor="let task of sortTask('-id');" class="userItem">
+            <mat-card class="app-task">
+                <div style="float: left;width: 60%;">
+                    <mat-checkbox [(ngModel)]="task.state" (click)="changeState(task)" (change)="changeState(task)">
+                        <span [ngClass]="{'underline': task.state === true }">{{task.description}}</span>
+                    </mat-checkbox>
+                </div>
+                <div style="float: right;">
+                    <mat-icon class="deleteItem" matTooltip="Delete task" style="margin-left: 5px;" (click)="deleteTask(task)">delete</mat-icon>
+                    <mat-icon class="deleteItem" matTooltip="Edit task" (click)="editTask(task)">create</mat-icon>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="alert alert-light" style="margin-top: 10px;" *ngIf="!hasFiles">
+        There are no tasks yet
+    </div>
+</div>
+<div mat-dialog-actions style="float:right">
+    <button mat-button (click)="close()">Close</button>
+</div>

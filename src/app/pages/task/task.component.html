@@ -1,0 +1,13 @@
+<mat-card style="margin-top: 10px;">
+    New task
+    <form [formGroup]="form">
+        <mat-form-field style="width: 100%;">
+            <mat-label>Task description</mat-label>
+            <input matInput formControlName="taskDescription" autocomplete="off" cdkFocusInitial [(ngModel)]="taskDescription">
+        </mat-form-field>
+    </form>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="createNewTask()">Add</button>
+        <button mat-button (click)="cancelNewTask()">Cancel</button>
+    </mat-card-actions>
+</mat-card>
